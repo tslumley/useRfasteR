@@ -19,3 +19,6 @@ I'll also show an example using bigQF, which is available as
 devtools::install_github("tslumley/bigQF")
 
 but you'll need a C compiler to install the package
+
+
+![](https://imgs.xkcd.com/comics/is_it_worth_the_time.png)
