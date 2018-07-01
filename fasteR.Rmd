@@ -56,7 +56,13 @@ Randomness: SSVD, subsampling
 <img src="faster-graph.png">
 
 
+---
 
+## Strategy
+
+![](xkcd-optimise.png)
+
+https://xkcd.com/1205/
 ---
 
 ## Timing and profiling
@@ -304,6 +310,46 @@ They both claim to be drop-in replacements for `data.frame`.
 
 Neither actually is, but they're *close*, and if you're editing the code anyway...
 
+
+---
+
+## Encodings
+
+There's no such thing as plain text
+
+- UTF-8
+- Latin1
+- *your local encoding*
+- plain bytes
+
+UTF-8 is flexible and space-efficient, but has variable character lengths.
+
+---
+
+```{r}
+library(microbenchmark)
+load("encoding.rda")
+substr(xx,1,10)
+substr(yy,1,10)
+substr(zz,1,10)
+c(Encoding(xx), Encoding(yy),Encoding(zz))
+```
+
+---
+
+```{r}
+microbenchmark(grep("user!", xx))
+microbenchmark(grep("user!", yy))
+microbenchmark(grep("user!", zz))
+```
+
+---
+
+```{r}
+microbenchmark(substr(xx,1000,1100))
+microbenchmark(substr(yy,1000,1100))
+microbenchmark(substr(zz,1000,1100))
+```
 
 ---
 
@@ -832,6 +878,17 @@ points(s2$u[,1:2],col="red")
 plot(s1$u[,1:2],pch=19)
 points(s3$v[,1],-s3$v[,2],col="green")
 ```    
+
+---
+
+## Subsampling plus polishing
+
+For generalized linear models on large datasets in a database
+
+- fit the model to a random subset
+- do a one-step update computed in the database
+
+My talk on Thursday
 
 ---
 
