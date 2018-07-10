@@ -10,7 +10,7 @@ Along with a recent version of R, please install the following packages:
 dplyr
 dbplyr
 Matrix 
-MonetDBlite
+MonetDBLite
 profvis
 
 
